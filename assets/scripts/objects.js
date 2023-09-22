@@ -1,5 +1,5 @@
 const person = {
-  name: 'Max',
+  'first name': 'Max',
   age: 30,
   hobbies: ['Sports', 'Cooking'],
   greet: function () {
@@ -7,20 +7,9 @@ const person = {
   }
 };
 
-///// ADDING /////
+console.log(person['first name']);
 
-person.isAdmin = true; // adds a new property
-
-///// MODIFYING /////
-
-person.age = 31; // overrides the old value
-
-console.log(person);
-
-///// DELETING /////
-
-delete person.age; // cleaner than setting it to undefined because you really get rid of it
-// person.age = undefined; // you don't see the property in the browser console, but technically it is still there
-// person.age = null; // still has the age property, but it resets the value
-
-console.log(person.age, person);
+const movieList = document.getElementById('movie-list');
+// movieList.style.backgroundColor = 'red';
+movieList.style['background-color'] = 'red'; // square brackets access feature
+movieList.style.display = 'block';
