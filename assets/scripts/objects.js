@@ -14,3 +14,5 @@ const person = {
 const keyName = 'first name';
 
 console.log(person[keyName]); // accesses dynamically the property
+console.log(person[userChosenKeyName]); // // accesses dynamically the property
+// console.log(person['level']); // you can access dynamically the property like this as well
