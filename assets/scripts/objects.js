@@ -21,10 +21,13 @@ const renderMovies = (filter = '') => {
   // outputting the movies
   filteredMovies.forEach(movie => {
     const movieEl = document.createElement('li');
-    let text = movie.info.title + ' - ';
-    for (const key in movie.info) {
+    const { info, ...otherProps } = movie; // between the curly brackets, you have to enter a key name that exists in the object
+    console.log(otherProps); // remaining properties of the object (here it is the id)
+    const { title: movieTitle } = info; // if you want to use a different name by adding a colon
+    let text = movieTitle + ' - ';
+    for (const key in info) {
       if (key !== 'title') {
-        text = text + `${key}: ${movie.info[key]}`;
+        text = text + `${key}: ${info[key]}`;
       }
     }
     movieEl.textContent = text;
