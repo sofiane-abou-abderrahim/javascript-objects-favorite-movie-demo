@@ -1,11 +1,9 @@
-const person = { name: 'Max', hobbies: ['Sports', 'Cooking'] };
+const person = { name: 'Max' };
 
-const person2 = { ...person, age: 30, hobbies: [...person.hobbies] };
+// const person2 = { ...person }; // recommanded approach because it is a really short syntax
 
-console.log(person);
-console.log(person2);
+const person2 = Object.assign({}, person); // has a bit better browser support
 
-person.hobbies.push('Coding');
+person.name = 'Maximilian';
 
-console.log(person);
-console.log(person2);
+console.log(person, person2);
