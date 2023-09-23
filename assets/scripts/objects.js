@@ -56,7 +56,7 @@ const addMovieHandler = () => {
       [extraName]: extraValue
     },
     id: Math.random().toString(),
-    getFormattedTitle: function () {
+    getFormattedTitle() {
       // Inside of a function, no matter if that function is part of an object or not,
       // the this keyword will refer to whatever called that function,
       // whatever was responsible for executing that function you could say
