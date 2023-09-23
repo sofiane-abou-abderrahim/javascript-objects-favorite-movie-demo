@@ -3,7 +3,7 @@ const searchBtn = document.getElementById('search-btn');
 
 const movies = []; // an array is an object (reference type), we can store this in a constant and still edit the value here with push and pop and so on
 
-const renderMovies = () => {
+const renderMovies = (filter = '') => {
   const movieList = document.getElementById('movie-list');
 
   if (movies.length === 0) {
@@ -14,8 +14,12 @@ const renderMovies = () => {
   }
   movieList.innerHTML = ''; // not ideal way: technically always everything gets cleared and re-rendered from scratch
 
+  const filteredMovies = !filter
+    ? movies
+    : movies.filter(movie => movie.info.title.includes(filter));
+
   // outputting the movies
-  movies.forEach(movie => {
+  filteredMovies.forEach(movie => {
     const movieEl = document.createElement('li');
     let text = movie.info.title + ' - ';
     for (const key in movie.info) {
