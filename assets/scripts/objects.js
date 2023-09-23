@@ -71,7 +71,18 @@ const addMovieHandler = () => {
   renderMovies();
 };
 
-const searchMovieHandler = () => {
+const searchMovieHandler = function () {
+  // The key thing really is that this refers to what called a function,
+  //the thing with what's in front of the function only works if you're executing the function on your own in your code
+  // When a function executes based on an event,
+  // then this inside of the function will actually refer to the object, to the element that's triggered,
+  // that event which in the end triggered that function
+  // => the browser binds "this" for you (on event listeners) to the DOM element triggered the event,
+  // ONLY IF YOU'RE NOT USING AN ARROW FUNCTION
+  console.log(this);
+  // If I click on "Search", we indeed see the button is output there,
+  // so this inside of a function that's triggered based on an event listener refers to the element or
+  // to the thing that is responsible for triggering this event.
   const filterTerm = document.getElementById('filter-title').value; // reads user input
   renderMovies(filterTerm); // calls renderMovies and forwards filterTerm
 };
