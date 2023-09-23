@@ -31,7 +31,9 @@ const renderMovies = (filter = '') => {
     // let text = getFormattedTitle.apply(movie) + ' - '; // it is like call(), but you use an array as a second parameter instead of an unlimited amount of values
     // let text = movieTitle.toUpperCase() + ' - '; // there is nothing wrong, but sometimes you want to bake certain logic into your objects
     for (const key in info) {
-      if (key !== 'title') {
+      if (key !== 'title' && key !== '_title') {
+        // && key !== '_title' should be added if you plan on using this pattern here
+        // so that we don't output the _title (on the browser) when we go through all properties
         text = text + `${key}: ${info[key]}`;
       }
     }
@@ -45,19 +47,28 @@ const addMovieHandler = () => {
   const extraName = document.getElementById('extra-name').value;
   const extraValue = document.getElementById('extra-value').value;
 
-  if (
-    title.trim() === '' ||
-    extraName.trim() === '' ||
-    extraValue.trim() === ''
-  ) {
+  if (extraName.trim() === '' || extraValue.trim() === '') {
     return;
   }
 
   const newMovie = {
     info: {
-      title, // useful shorthand notation, if key name and value name are the same, you can use that instead of "title: title"
+      set title(val) {
+        if (val.trim() === '') {
+          // extra validation
+          this._title === 'DEFAULT'; // fallback
+          return;
+        }
+        this._title = val; // internal value
+      }, // creates a setter
+      get title() {
+        return this._title; // refers to this internal property which I create here on the fly in the setter
+        // return this._title.toUpperCase(); // you could do additional transformations, like this.
+      }, // creates a getter
       [extraName]: extraValue
     },
+    // So getters and setters can be nice if you want to add some extra validation, maybe a fallback
+    // or add some extra transformation when getting a value
     id: Math.random().toString(),
     getFormattedTitle() {
       console.log(this);
@@ -67,22 +78,17 @@ const addMovieHandler = () => {
       return this.info.title.toUpperCase();
     }
   };
+
+  newMovie.info.title = title; // we assigned the title constant we created in addMovieHandler()
+  console.log(newMovie.info.title); // the getter is triggered whenever we access the property, for example like this.
+
   movies.push(newMovie);
   renderMovies();
 };
 
 const searchMovieHandler = function () {
-  // The key thing really is that this refers to what called a function,
-  //the thing with what's in front of the function only works if you're executing the function on your own in your code
-  // When a function executes based on an event,
-  // then this inside of the function will actually refer to the object, to the element that's triggered,
-  // that event which in the end triggered that function
-  // => the browser binds "this" for you (on event listeners) to the DOM element triggered the event,
-  // ONLY IF YOU'RE NOT USING AN ARROW FUNCTION
   console.log(this);
-  // If I click on "Search", we indeed see the button is output there,
-  // so this inside of a function that's triggered based on an event listener refers to the element or
-  // to the thing that is responsible for triggering this event.
+
   const filterTerm = document.getElementById('filter-title').value; // reads user input
   renderMovies(filterTerm); // calls renderMovies and forwards filterTerm
 };
