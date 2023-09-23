@@ -1,3 +1,5 @@
+// 'use strict';
+
 // const members = {
 //   teamName: 'Blue Rockets',
 //   people: ['Max', 'Manuel'],
