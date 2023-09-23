@@ -52,4 +52,10 @@ const addMovieHandler = () => {
   renderMovies();
 };
 
+const searchMovieHandler = () => {
+  const filterTerm = document.getElementById('filter-title').value; // reads user input
+  renderMovies(filterTerm); // calls renderMovies and forwards filterTerm
+};
+
 addMovieBtn.addEventListener('click', addMovieHandler);
+searchBtn.addEventListener('click', searchMovieHandler);
