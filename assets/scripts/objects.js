@@ -21,6 +21,10 @@ const renderMovies = (filter = '') => {
   // outputting the movies
   filteredMovies.forEach(movie => {
     const movieEl = document.createElement('li');
+    // if ('info' in movie) {
+    // } // checks for the existance of a property in an object with in keyword
+    // if (movie.info === undefined) {
+    // } // checks for the existance of a property in an object with a comparison
     const { info, ...otherProps } = movie; // between the curly brackets, you have to enter a key name that exists in the object
     console.log(otherProps); // remaining properties of the object (here it is the id)
     const { title: movieTitle } = info; // if you want to use a different name by adding a colon
