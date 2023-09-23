@@ -26,8 +26,9 @@ const renderMovies = (filter = '') => {
     console.log(otherProps); // remaining properties of the object (here it is the id)
     // const { title: movieTitle } = info; // if you want to use a different name by adding a colon
     let { getFormattedTitle } = movie; // object destructuring on a method
-    getFormattedTitle = getFormattedTitle.bind(movie); // we can also use bind to not only preconfigure arguments a function will get but also to preconfigure what this will refer to
-    let text = getFormattedTitle() + ' - '; // executes the function (movie is the thing responsible for executing it)
+    // getFormattedTitle = getFormattedTitle.bind(movie); // we can also use bind to not only preconfigure arguments a function will get but also to preconfigure what this will refer to
+    let text = getFormattedTitle.call(movie) + ' - '; // it executes a function for you when you want to change what this refers to
+    // let text = getFormattedTitle.apply(movie) + ' - '; // it is like call(), but you use an array as a second parameter instead of an unlimited amount of values
     // let text = movieTitle.toUpperCase() + ' - '; // there is nothing wrong, but sometimes you want to bake certain logic into your objects
     for (const key in info) {
       if (key !== 'title') {
