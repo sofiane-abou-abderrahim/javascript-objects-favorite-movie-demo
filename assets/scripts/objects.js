@@ -1,3 +1,4 @@
+'use strict';
 const addMovieBtn = document.getElementById('add-movie-btn');
 const searchBtn = document.getElementById('search-btn');
 
@@ -24,8 +25,9 @@ const renderMovies = (filter = '') => {
     const { info, ...otherProps } = movie; // between the curly brackets, you have to enter a key name that exists in the object
     console.log(otherProps); // remaining properties of the object (here it is the id)
     // const { title: movieTitle } = info; // if you want to use a different name by adding a colon
-    // const { getFormattedTitle } = movie; // object destructuring on a method
-    let text = movie.getFormattedTitle() + ' - '; // executes the function (movie is the thing responsible for executing it)
+    let { getFormattedTitle } = movie; // object destructuring on a method
+    getFormattedTitle = getFormattedTitle.bind(movie); // we can also use bind to not only preconfigure arguments a function will get but also to preconfigure what this will refer to
+    let text = getFormattedTitle() + ' - '; // executes the function (movie is the thing responsible for executing it)
     // let text = movieTitle.toUpperCase() + ' - '; // there is nothing wrong, but sometimes you want to bake certain logic into your objects
     for (const key in info) {
       if (key !== 'title') {
@@ -57,6 +59,7 @@ const addMovieHandler = () => {
     },
     id: Math.random().toString(),
     getFormattedTitle() {
+      console.log(this);
       // Inside of a function, no matter if that function is part of an object or not,
       // the this keyword will refer to whatever called that function,
       // whatever was responsible for executing that function you could say
