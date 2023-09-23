@@ -50,7 +50,7 @@ const addMovieHandler = () => {
       title, // useful shorthand notation, if key name and value name are the same, you can use that instead of "title: title"
       [extraName]: extraValue
     },
-    id: Math.random()
+    id: Math.random().toString()
   };
   movies.push(newMovie);
   renderMovies();
