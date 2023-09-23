@@ -21,14 +21,12 @@ const renderMovies = (filter = '') => {
   // outputting the movies
   filteredMovies.forEach(movie => {
     const movieEl = document.createElement('li');
-    // if ('info' in movie) {
-    // } // checks for the existance of a property in an object with in keyword
-    // if (movie.info === undefined) {
-    // } // checks for the existance of a property in an object with a comparison
     const { info, ...otherProps } = movie; // between the curly brackets, you have to enter a key name that exists in the object
     console.log(otherProps); // remaining properties of the object (here it is the id)
-    const { title: movieTitle } = info; // if you want to use a different name by adding a colon
-    let text = movieTitle + ' - ';
+    // const { title: movieTitle } = info; // if you want to use a different name by adding a colon
+    // const { getFormattedTitle } = movie; // object destructuring on a method
+    let text = movie.getFormattedTitle() + ' - '; // executes the function (movie is the thing responsible for executing it)
+    // let text = movieTitle.toUpperCase() + ' - '; // there is nothing wrong, but sometimes you want to bake certain logic into your objects
     for (const key in info) {
       if (key !== 'title') {
         text = text + `${key}: ${info[key]}`;
@@ -57,7 +55,13 @@ const addMovieHandler = () => {
       title, // useful shorthand notation, if key name and value name are the same, you can use that instead of "title: title"
       [extraName]: extraValue
     },
-    id: Math.random().toString()
+    id: Math.random().toString(),
+    getFormattedTitle: function () {
+      // Inside of a function, no matter if that function is part of an object or not,
+      // the this keyword will refer to whatever called that function,
+      // whatever was responsible for executing that function you could say
+      return this.info.title.toUpperCase();
+    }
   };
   movies.push(newMovie);
   renderMovies();
