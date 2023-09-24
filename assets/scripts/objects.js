@@ -23,9 +23,9 @@ const renderMovies = (filter = '') => {
     const movieEl = document.createElement('li');
     const { info, ...otherProps } = movie; // between the curly brackets, you have to enter a key name that exists in the object
     console.log(otherProps); // remaining properties of the object (here it is the id)
-    // const { title: movieTitle } = info; // if you want to use a different name by adding a colon
-    // const { getFormattedTitle } = movie; // object destructuring on a method
-    let text = movie.getFormattedTitle() + ' - '; // executes the function (movie is the thing responsible for executing it)
+    // const { title: movieTitle } = info; // we don't need this anymore
+    // const { getFormattedTitle } = movie; // object destructuring on a method (we're going to use this code later)
+    let text = movie.getFormattedTitle() + ' - '; // executes the function ("movie" is the thing responsible for executing it)
     // let text = movieTitle.toUpperCase() + ' - '; // there is nothing wrong, but sometimes you want to bake certain logic into your objects
     for (const key in info) {
       if (key !== 'title') {
