@@ -20,7 +20,7 @@ const renderMovies = () => {
   // outputting the movies
   movies.forEach(movie => {
     const movieEl = document.createElement('li');
-    movieEl.textContent = movie.info.title;
+    movieEl.textContent = movie.info.title; // we chain multiple property requests
     movieList.append(movieEl);
   }); // you could use a for/of loop
 };
