@@ -6,6 +6,7 @@ const movies = []; // an array is an object (reference type), we can store this 
 const renderMovies = () => {
   const movieList = document.getElementById('movie-list');
 
+  // toggles the visibility of the list
   if (movies.length === 0) {
     movieList.classList.remove('visible'); // removes the "visible" class if it's on it
     return;
