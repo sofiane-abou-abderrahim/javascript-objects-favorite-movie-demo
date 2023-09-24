@@ -23,6 +23,7 @@ const addMovieHandler = () => {
     },
     id: Math.random()
   };
+
   movies.push(newMovie);
   console.log(newMovie);
 };
