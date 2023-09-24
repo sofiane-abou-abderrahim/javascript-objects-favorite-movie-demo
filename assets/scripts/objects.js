@@ -17,8 +17,9 @@ const renderMovies = () => {
   // outputting the movies
   movies.forEach(movie => {
     const movieEl = document.createElement('li');
+    // you can't output the user entered key-value combination by accessing dynamic values with the square bracket notation
+    // movieEl.textContent = movie.info.title + ' - ' + movie.info[extraName];
     let text = movie.info.title + ' - ';
-    // let text = movie.info.title + ' - ' + movie.info[extraName]; // you can't output the user entered key-value combination by accessing dynamic values with the square bracket notation
     for (const key in movie.info) {
       if (key !== 'title') {
         text = text + `${key}: ${movie.info[key]}`;
