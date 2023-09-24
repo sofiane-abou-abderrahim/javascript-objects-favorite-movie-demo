@@ -7,7 +7,7 @@ const renderMovies = () => {
   const movieList = document.getElementById('movie-list');
 
   if (movies.length === 0) {
-    movieList.classList.remove('visible');
+    movieList.classList.remove('visible'); // removes the "visible" class if it's on it
     return;
   } else {
     movieList.classList.add('visible');
