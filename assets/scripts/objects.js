@@ -7,6 +7,10 @@ const person = {
   }
 };
 
+console.log(person.isAdmin);
+// If you access a property on an object which doesn't exist, you're not getting an error,
+// Instead, you get "undefined".
+
 ///// ADDING /////
 
 person.isAdmin = true; // adds a new property
