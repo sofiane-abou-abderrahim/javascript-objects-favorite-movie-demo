@@ -25,6 +25,10 @@ const renderMovies = () => {
         // here it has to be a string ('title'),
         // because otherwise if you write it like this, Javascript would look for a variable named "title"
         text = text + `${key}: ${movie.info[key]}`;
+        // ${movie.info[key]} => we dynamically access the value for whichever property name the user chose
+        // This is using this dynamic property accessing logic,
+        // we want to access the value for the key with that name that is stored in that key constant here
+        // and we do that with the square brackets
       }
     }
     movieEl.textContent = text;
