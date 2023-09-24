@@ -12,7 +12,9 @@ const renderMovies = () => {
   } else {
     movieList.classList.add('visible');
   }
-  movieList.innerHTML = ''; // not ideal way: technically always everything gets cleared and re-rendered from scratch
+  movieList.innerHTML = ''; // not ideal way: technically always everything gets cleared and re-rendered from scratch because it costs unnecessary performance
+  // Now the ideal approach would be that for every movie you add, you append one item to the already existing list
+  // (this is also what we did in an earlier module)
 
   // outputting the movies
   movies.forEach(movie => {
@@ -42,6 +44,7 @@ const addMovieHandler = () => {
     },
     id: Math.random()
   };
+
   movies.push(newMovie);
   renderMovies();
 };
