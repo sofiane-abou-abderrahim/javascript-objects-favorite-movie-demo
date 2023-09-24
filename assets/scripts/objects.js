@@ -22,6 +22,8 @@ const renderMovies = () => {
     let text = movie.info.title + ' - ';
     for (const key in movie.info) {
       if (key !== 'title') {
+        // here it has to be a string ('title'),
+        // because otherwise if you write it like this, Javascript would look for a variable named "title"
         text = text + `${key}: ${movie.info[key]}`;
       }
     }
