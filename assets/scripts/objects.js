@@ -59,7 +59,7 @@ const addMovieHandler = () => {
     getFormattedTitle: function () {
       // Inside of a function, no matter if that function is part of an object or not,
       // the this keyword will refer to whatever called that function,
-      // whatever was responsible for executing that function you could say
+      // whatever was responsible for executing that function in your code you could say
       return this.info.title.toUpperCase();
     }
   };
