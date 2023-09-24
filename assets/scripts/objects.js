@@ -23,7 +23,7 @@ const renderMovies = (filter = '') => {
     const movieEl = document.createElement('li');
     const { info, ...otherProps } = movie; // between the curly brackets, you have to enter a key name that exists in the object
     console.log(otherProps); // remaining properties of the object (here it is the id)
-    const { title: movieTitle } = info; // if you want to use a different name by adding a colon
+    const { title: movieTitle } = info; // you can assign a new name to that pulled out value by adding a colon here
     let text = movieTitle + ' - ';
     for (const key in info) {
       if (key !== 'title') {
