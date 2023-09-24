@@ -133,4 +133,4 @@ searchBtn.addEventListener('click', searchMovieHandler);
 
 // const result = members.getTeamMembers();
 // console.log(result); // 'Max' and 'Manuel' are undefined
-// // Now when I create this function like this with the function keyword, "this" is bound
+// // Now when I create this function like this with the function keyword, "this" (in front of teamName) is bound
