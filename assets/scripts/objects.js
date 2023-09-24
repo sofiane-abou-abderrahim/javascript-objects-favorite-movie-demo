@@ -61,7 +61,7 @@ const addMovieHandler = () => {
       // the this keyword will refer to whatever called that function,
       // whatever was responsible for executing that function you could say
       return this.info.title.toUpperCase();
-    }
+    } // method shorthand syntax
   };
   movies.push(newMovie);
   renderMovies();
